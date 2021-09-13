@@ -1,4 +1,25 @@
-<h2>product list</h2>
-{{#each products}}
-	<p>{{this.title}}</p>
-{{/each}}
+<h2>Showing results for: {{textSearch}}</h2>
+
+<div class="card-container">
+	{{#each products}}
+
+		<div class="card" style="width: 18rem;">
+			<img src="{{this.thumbnail}}" class="card-img-top" alt="{{title}}" />
+			<div class="card-body">
+				<h5 class="card-title">{{this.title}}</h5>
+				<p class="card-price">${{this.price}}</p>
+				<form action="/my-products" method="POST">
+					<input type="hidden" name="image" value={{this.thumbnail}} />
+					<input type="hidden" name="title" value="{{this.title}}" />
+					<input type="hidden" name="price" value={{this.price}} />
+					<button type="submit" class="btn btn-primary">Add to my products</button>
+				</form>
+				<form action="">
+					<button type="submit" class="btn btn-primary">See details</button>
+				</form>
+				{{! <a href="#" class="btn btn-primary">See details</a> }}
+			</div>
+		</div>
+
+	{{/each}}
+</div>

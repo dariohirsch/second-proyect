@@ -17,11 +17,52 @@ router.post("/search-products", (req, res) => {
 	ProductsAPI.findProductsByText(textSearch)
 		.then((productsFound) => {
 			// console.log(productsFound)
-			res.render("products/products-list", { products: productsFound.data.results })
+			res.render("products/products-list", { products: productsFound.data.results, textSearch })
 		})
 		.catch((error) => {
 			console.log(error)
 		})
 })
 
+router.get("/my-products", isLoggedIn, (req, res) => {
+	User.findById(req.user._id)
+		.populate("myProducts")
+		.then((result) => {
+			if (result.myProducts.length === 0) {
+				//message:req is only to get the message
+				res.render("products/my-products", { message: req })
+			} else {
+				res.render("products/my-products", { result: result.myProducts, userId: req.user._id })
+			}
+		})
+		.catch((error) => {
+			console.log(error)
+		})
+})
+
+router.post("/my-products", isLoggedIn, (req, res) => {
+	const info = ({ image, title, price } = req.body)
+	// console.log(req.body)
+
+	Product.create(info).then((result) => {
+		User.findByIdAndUpdate(req.user._id, { $push: { myProducts: result._id } }, { new: true })
+
+			.then(() => {
+				res.redirect("/my-products")
+			})
+			.catch((error) => {
+				console.log(error)
+			})
+	})
+})
+
+router.post("/remove-product", isLoggedIn, (req, res) => {
+	const id = req.body.userId
+
+	User.findByIdAndUpdate(id, { $pull: { myProducts: req.body.id } })
+		.then(() => {
+			res.redirect("/my-products")
+		})
+		.catch((err) => console.log(err))
+})
 module.exports = router

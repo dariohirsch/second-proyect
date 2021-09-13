@@ -1,0 +1,20 @@
+<div class="card-container">
+	{{#if message}}
+	<h3>You don't have any product yet 😞</h3>
+	{{/if}}
+	{{#each result}}
+
+		<div class="card" style="width: 18rem;">
+			<img src="{{this.image}}" class="card-img-top" alt="{{title}}" />
+			<div class="card-body">
+				<h5 class="card-title">{{this.title}}</h5>
+				<p class="card-price">${{this.price}}</p>
+				<form action="/remove-product" method="POST">
+					<input type="hidden" name="id" value={{this._id}} />
+					<input type="hidden" name="userId" value={{../userId}} />
+					<button type="submit" class="btn btn-primary">Remove</button>
+				</form>
+			</div>
+		</div>
+	{{/each}}
+</div>

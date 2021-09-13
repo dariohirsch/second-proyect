@@ -3,16 +3,19 @@ body {
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-	color: #00b7ff;
-}
-
 #main-title {
 	color: 15px;
 	font-size: 120px;
 	font-family: "Allison", cursive;
 }
 
+#navbar a {
+	color: black;
+}
+
+.up-in-out > a {
+	color: black;
+}
 #navbar {
 	background-color: rgb(243, 238, 162);
 	border-bottom: 0.5px 1px black;
@@ -54,4 +57,60 @@ a {
 
 #home-nav {
 	font-family: "Allison", cursive;
+}
+
+.btn-primary {
+	width: 10rem;
+	font-size: 10px;
+}
+
+.card-img-top {
+	width: 80%;
+	height: 60%;
+}
+
+.card-title {
+	font-size: 12px;
+	text-align: center;
+}
+
+.card-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 40px 40px 200px 40px;
+}
+
+.card {
+	height: 25rem;
+	align-items: center;
+	border: none;
+	margin: 4px;
+}
+.card-price {
+	font-size: 14px;
+}
+
+.card-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.up-in-out {
+	display: flex;
+	margin-left: auto;
+}
+
+footer {
+	background-color: #8c8383;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 5%;
+	color: white;
+	display: flex;
+	align-items: center;
+	font-size: 10px;
+	padding: 10px;
 }
