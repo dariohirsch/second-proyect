@@ -14,8 +14,10 @@
 					<input type="hidden" name="price" value={{this.price}} />
 					<button type="submit" class="btn btn-primary">Add to my products</button>
 				</form>
-				<form action="">
+				<form action="/item-detail" method="POST">
 					<button type="submit" class="btn btn-primary">See details</button>
+					<input type="hidden" name="itemId" value={{this.id}} />
+
 				</form>
 				{{! <a href="#" class="btn btn-primary">See details</a> }}
 			</div>

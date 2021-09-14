@@ -1,16 +1,16 @@
 <h3>Create an account!</h3>
 
-<form action="/signup" method="POST">
+<form action="/signup" class="search-form" method="POST">
 	<label>
-		Username
-		<input type="text" name="username" />
+
+		<input type="text" class="search-input" placeholder="username" name="username" />
 	</label>
 	<label>
-		Password
-		<input type="password" name="password" />
+
+		<input type="password" class="search-input" placeholder="password" name="password" />
 	</label>
 
-	<button type="submit">Submit</button>
+	<button type="submit" class="main-button">Submit</button>
 </form>
 
 <p class="error-message">{{errorMessage}}</p>

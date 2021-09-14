@@ -10,6 +10,10 @@ class ProductsApi {
 	findProductsByText(findText) {
 		return this.api.get(`/sites/MLA/search?q=${findText}`)
 	}
+
+	findProductById(itemId) {
+		return this.api.get(`/items/${itemId}`)
+	}
 }
 
 module.exports = ProductsApi

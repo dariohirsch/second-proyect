@@ -1,16 +1,16 @@
 <h3>Please Log In</h3>
 
-<form action="/login" method="POST">
+<form class="search-form" action="/login" method="POST">
 	<label>
-		Username
-		<input type="text" name="username" />
+
+		<input class="search-input" placeholder="username" type="text" name="username" />
 	</label>
 	<label>
-		Password
-		<input type="password" name="password" />
+
+		<input type="password" placeholder="password" class="search-input" name="password" />
 	</label>
 
-	<button type="submit">Submit</button>
+	<button type="submit" class="main-button">Submit</button>
 </form>
 
 <p class="error-message">{{errorMessage}}</p>
