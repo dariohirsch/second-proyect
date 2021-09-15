@@ -78,7 +78,7 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin: 40px 40px 200px 40px;
+	margin: 40px 40px 100px 40px;
 }
 
 .card {
@@ -180,4 +180,8 @@ footer {
 	flex-direction: column;
 	flex-wrap: wrap;
 	align-content: space-around;
+}
+
+#next-previous {
+	padding-bottom: 10%;
 }

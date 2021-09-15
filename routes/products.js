@@ -94,7 +94,7 @@ router.get("/category-products-search", (req, res) => {
 	ProductsAPI.getItemsByCategory(categoryId)
 		.then((category) => {
 			// console.log(category.data.results)
-			res.render("products/items-by-category", { catResult: category.data.results, userSession: req.session.user })
+			res.render("products/items-by-category", { catResult: category.data.results, userSession: req.session.user, categoryId })
 		})
 		.catch((error) => {
 			console.log(error)
