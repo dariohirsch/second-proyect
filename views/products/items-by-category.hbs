@@ -1,0 +1,25 @@
+<div class="card-container">
+	{{#each catResult}}
+
+		<div class="card" style="width: 18rem;">
+			<img src="{{thumbnail}}" class="card-img-top" alt="{{title}}" />
+			<div class="card-body">
+				<h5 class="card-title">{{title}}</h5>
+				<p class="card-price">${{price}}</p>
+				<form action="/my-products" method="POST">
+					<input type="hidden" name="image" value={{thumbnail}} />
+					<input type="hidden" name="title" value="{{title}}" />
+					<input type="hidden" name="price" value={{price}} />
+					<button type="submit" class="btn btn-primary">Add to my products</button>
+				</form>
+				<form action="/item-detail" method="POST">
+					<button type="submit" class="btn btn-primary">See details</button>
+					<input type="hidden" name="itemId" value={{id}} />
+
+				</form>
+
+			</div>
+		</div>
+
+	{{/each}}
+</div>

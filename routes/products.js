@@ -76,4 +76,29 @@ router.post("/item-detail", (req, res) => {
 			console.log(error)
 		})
 })
+
+router.get("/search-by-category", (req, res) => {
+	ProductsAPI.getCategories()
+		.then((categories) => {
+			res.render("products/search-by-category", { categories: categories.data, userSession: req.session.user })
+			// console.log(categories.data)
+		})
+		.catch((error) => {
+			console.log(error)
+		})
+})
+
+router.get("/category-products-search", (req, res) => {
+	const categoryId = req.query.id
+
+	ProductsAPI.getItemsByCategory(categoryId)
+		.then((category) => {
+			// console.log(category.data.results)
+			res.render("products/items-by-category", { catResult: category.data.results, userSession: req.session.user })
+		})
+		.catch((error) => {
+			console.log(error)
+		})
+})
+
 module.exports = router

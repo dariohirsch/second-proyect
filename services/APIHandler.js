@@ -14,6 +14,14 @@ class ProductsApi {
 	findProductById(itemId) {
 		return this.api.get(`/items/${itemId}`)
 	}
+
+	getCategories() {
+		return this.api.get("/sites/MLA/categories")
+	}
+
+	getItemsByCategory(categoryId) {
+		return this.api.get(`/sites/MLA/search?category=${categoryId}`)
+	}
 }
 
 module.exports = ProductsApi

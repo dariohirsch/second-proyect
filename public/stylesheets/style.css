@@ -167,3 +167,17 @@ footer {
 	border: 2px solid rgb(46, 91, 240);
 	border-radius: 10px;
 }
+
+.nav-link:hover {
+	color: rgb(46, 91, 240);
+}
+
+.categories-container {
+	width: 100%;
+	padding: 20px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: space-around;
+}
