@@ -6,6 +6,9 @@ const express = require("express")
 
 const hbs = require("hbs")
 
+hbs.registerHelper("sum", function (v1, v2) {
+	return v1 + v2
+})
 const app = express()
 
 require("./config")(app)

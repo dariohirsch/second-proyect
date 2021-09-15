@@ -6,6 +6,7 @@ const isLoggedOut = require("../middleware/isLoggedOut")
 const isLoggedIn = require("../middleware/isLoggedIn")
 const Api = require("../services/APIHandler")
 const ProductsAPI = new Api()
+const Swal = require("sweetalert2")
 
 router.get("/search-products", (req, res) => {
 	res.render("products/search-products", { userSession: req.session.user })
@@ -48,7 +49,7 @@ router.post("/my-products", isLoggedIn, (req, res) => {
 		User.findByIdAndUpdate(req.user._id, { $push: { myProducts: result._id } }, { new: true })
 
 			.then(() => {
-				res.redirect("/my-products")
+				// res.redirect("/my-products")
 			})
 			.catch((error) => {
 				console.log(error)
@@ -90,11 +91,20 @@ router.get("/search-by-category", (req, res) => {
 
 router.get("/category-products-search", (req, res) => {
 	const categoryId = req.query.id
+	let page = 1
+	if (req.query.page) {
+		page = req.query.page
+	}
+	let nextPage = parseInt(page) + 1
+	let prevPage = parseInt(page) - 1
+	const limit = 50
 
-	ProductsAPI.getItemsByCategory(categoryId)
+	const offset = (page - 1) * limit
+
+	ProductsAPI.getItemsByCategory(categoryId, limit, offset)
 		.then((category) => {
 			// console.log(category.data.results)
-			res.render("products/items-by-category", { catResult: category.data.results, userSession: req.session.user, categoryId })
+			res.render("products/items-by-category", { catResult: category.data.results, userSession: req.session.user, categoryId, page, nextPage, prevPage })
 		})
 		.catch((error) => {
 			console.log(error)

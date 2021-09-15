@@ -19,8 +19,8 @@ class ProductsApi {
 		return this.api.get("/sites/MLA/categories")
 	}
 
-	getItemsByCategory(categoryId) {
-		return this.api.get(`/sites/MLA/search?category=${categoryId}`)
+	getItemsByCategory(categoryId, limit, offset) {
+		return this.api.get(`/sites/MLA/search?category=${categoryId}&limit=${limit}&offset=${offset}`)
 	}
 }
 
