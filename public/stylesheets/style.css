@@ -6,7 +6,7 @@ body {
 #main-title {
 	color: 15px;
 	font-size: 120px;
-	font-family: "Allison", cursive;
+	font-family: "Caveat", cursive;
 }
 
 #navbar a {
@@ -17,7 +17,7 @@ body {
 	color: black;
 }
 #navbar {
-	background-color: rgb(240, 231, 102);
+	background-color: rgb(255, 212, 91);
 	border-bottom: 0.5px 1px black;
 }
 
@@ -183,7 +183,7 @@ footer {
 }
 
 #next-previous {
-	padding-bottom: 10%;
+	padding-bottom: 4%;
 }
 
 #next-previous a {
@@ -193,4 +193,18 @@ footer {
 	border-radius: 10px;
 	padding: 10px;
 	margin: 12px;
+}
+
+#share {
+	text-decoration: none;
+	font-size: 25px;
+	color: #089835;
+	border: 2px solid;
+	border-radius: 10px;
+	padding: 14px;
+}
+
+#share:hover {
+	color: white;
+	background-color: #089835;
 }

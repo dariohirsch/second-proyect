@@ -1,9 +1,11 @@
+
 <div class="card-container">
+	
 	{{#if message}}
 	<h3>You don't have any product yet 😞</h3>
 	{{/if}}
 	{{#each result}}
-
+	    
 		<div class="card" style="width: 18rem;">
 			<img src="{{this.image}}" class="card-img-top" alt="{{title}}" />
 			<div class="card-body">
@@ -18,3 +20,4 @@
 		</div>
 	{{/each}}
 </div>
+<a id="share" href="https://api.whatsapp.com/send?text=https://segundo-proyecto-dario.herokuapp.com/my-products">Share your list </a>

@@ -6,7 +6,6 @@ const isLoggedOut = require("../middleware/isLoggedOut")
 const isLoggedIn = require("../middleware/isLoggedIn")
 const Api = require("../services/APIHandler")
 const ProductsAPI = new Api()
-const Swal = require("sweetalert2")
 
 router.get("/search-products", (req, res) => {
 	res.render("products/search-products", { userSession: req.session.user })
@@ -105,6 +104,7 @@ router.get("/category-products-search", (req, res) => {
 	ProductsAPI.getItemsByCategory(categoryId, limit, offset)
 		.then((category) => {
 			let totalResults = category.data.paging.total
+			// console.log(totalResults)
 			let totalPages = totalResults / 50
 			res.render("products/items-by-category", { catResult: category.data.results, userSession: req.session.user, categoryId, page, nextPage, prevPage, pageGreaterThanOne })
 		})
