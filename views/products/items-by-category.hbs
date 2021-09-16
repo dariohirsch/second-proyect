@@ -25,8 +25,10 @@
 
 </div>
 <div id="next-previous">
-
-	<a href="/category-products-search?id={{categoryId}}&page={{prevPage}}">Prev</a>
-	<a href="/category-products-search?id={{categoryId}}&page={{nextPage}}">Next</a>
-
+	{{#if pageGreaterThanOne}}
+		<a href="/category-products-search?id={{categoryId}}&page={{prevPage}}">👈🏼 </a>
+		<a href="/category-products-search?id={{categoryId}}&page={{nextPage}}">👉🏼</a>
+	{{else}}
+		<a href="/category-products-search?id={{categoryId}}&page={{nextPage}}">Next</a>
+	{{/if}}
 </div>

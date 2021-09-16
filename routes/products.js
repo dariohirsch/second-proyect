@@ -49,7 +49,7 @@ router.post("/my-products", isLoggedIn, (req, res) => {
 		User.findByIdAndUpdate(req.user._id, { $push: { myProducts: result._id } }, { new: true })
 
 			.then(() => {
-				// res.redirect("/my-products")
+				res.redirect("/my-products")
 			})
 			.catch((error) => {
 				console.log(error)
@@ -97,14 +97,16 @@ router.get("/category-products-search", (req, res) => {
 	}
 	let nextPage = parseInt(page) + 1
 	let prevPage = parseInt(page) - 1
-	const limit = 50
+	let pageGreaterThanOne = parseInt(page) > 1
 
-	const offset = (page - 1) * limit
+	const limit = 50
+	const offset = (parseInt(page) - 1) * limit
 
 	ProductsAPI.getItemsByCategory(categoryId, limit, offset)
 		.then((category) => {
-			// console.log(category.data.results)
-			res.render("products/items-by-category", { catResult: category.data.results, userSession: req.session.user, categoryId, page, nextPage, prevPage })
+			let totalResults = category.data.paging.total
+			let totalPages = totalResults / 50
+			res.render("products/items-by-category", { catResult: category.data.results, userSession: req.session.user, categoryId, page, nextPage, prevPage, pageGreaterThanOne })
 		})
 		.catch((error) => {
 			console.log(error)
