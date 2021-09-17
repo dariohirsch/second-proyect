@@ -25,14 +25,15 @@ router.post("/search-products", (req, res) => {
 })
 
 router.get("/my-products", isLoggedIn, (req, res) => {
+	const username = req.user.username
 	User.findById(req.user._id)
 		.populate("myProducts")
 		.then((result) => {
 			if (result.myProducts.length === 0) {
 				//message:req is only to get the message
-				res.render("products/my-products", { message: req, userSession: req.session.user })
+				res.render("products/my-products", { message: req, userSession: req.session.user, username })
 			} else {
-				res.render("products/my-products", { result: result.myProducts, userId: req.user._id, userSession: req.session.user })
+				res.render("products/my-products", { result: result.myProducts, userId: req.user._id, userSession: req.session.user, username })
 			}
 		})
 		.catch((error) => {
@@ -103,9 +104,9 @@ router.get("/category-products-search", (req, res) => {
 
 	ProductsAPI.getItemsByCategory(categoryId, limit, offset)
 		.then((category) => {
-			let totalResults = category.data.paging.total
+			// let totalResults = category.data.paging.total
 			// console.log(totalResults)
-			let totalPages = totalResults / 50
+			// let totalPages = totalResults / 50
 			res.render("products/items-by-category", { catResult: category.data.results, userSession: req.session.user, categoryId, page, nextPage, prevPage, pageGreaterThanOne })
 		})
 		.catch((error) => {
