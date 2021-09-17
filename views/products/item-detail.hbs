@@ -11,7 +11,7 @@
 				</div>
 			{{/each}}
 		</div>
-		<button class="carousel-control-prev boton-carousel" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 			<span class="visually-hidden">Previous</span>
 		</button>
@@ -25,10 +25,12 @@
 <p>Available Quantity: {{item.available_quantity}}</p>
 <p>Location: {{item.seller_address.state.name}}</p>
 <input type="button" onclick="history.back()" name="Back to search" class="btn btn-primary" value="Back to search" /><br />
+
 <form action="/my-products" method="POST">
-	<input type="hidden" name="image" value={{item.thumbnail}} />
+
+	<input type="hidden" name="image" value={{image}} />
 	<input type="hidden" name="title" value="{{item.title}}" />
 	<input type="hidden" name="price" value={{item.price}} />
-	<button type="submit" class="btn btn-primary">Add to my products</button>
+	<button type="submit" class="btn btn-primary">Add to my Wish List</button>
 </form>
 <script src="/js/carrousel.js"></script>

@@ -6,6 +6,7 @@
 			<div class="card-body">
 				<h5 class="card-title">{{title}}</h5>
 				<p class="card-price">${{price}}</p>
+
 				<form action="/my-products" method="POST">
 					<input type="hidden" name="image" value={{thumbnail}} />
 					<input type="hidden" name="title" value="{{title}}" />

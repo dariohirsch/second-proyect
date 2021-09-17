@@ -16,7 +16,7 @@ router.post("/search-products", (req, res) => {
 	// console.log(textSearch)
 	ProductsAPI.findProductsByText(textSearch)
 		.then((productsFound) => {
-			// console.log(productsFound)
+			// res.send(productsFound.data)
 			res.render("products/products-list", { products: productsFound.data.results, textSearch, userSession: req.session.user })
 		})
 		.catch((error) => {
@@ -71,7 +71,7 @@ router.post("/item-detail", (req, res) => {
 	const itemId = req.body.itemId
 	ProductsAPI.findProductById(itemId)
 		.then((itemFound) => {
-			res.render("products/item-detail", { item: itemFound.data, userSession: req.session.user })
+			res.render("products/item-detail", { item: itemFound.data, userSession: req.session.user, image: itemFound.data.pictures[0].url })
 		})
 		.catch((error) => {
 			console.log(error)

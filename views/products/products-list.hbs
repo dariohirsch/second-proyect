@@ -8,9 +8,11 @@
 			<div class="card-body">
 				<h5 class="card-title">{{this.title}}</h5>
 				<p class="card-price">${{this.price}}</p>
+
 				<form action="/my-products" method="POST">
-					<input type="hidden" name="image" value={{this.thumbnail}} />
+
 					<input type="hidden" name="title" value="{{this.title}}" />
+					<input type="hidden" name="image" value={{this.thumbnail}} />
 					<input type="hidden" name="price" value={{this.price}} />
 					<button type="submit" class="btn btn-primary">Add to My Wish List</button>
 				</form>
